@@ -1,7 +1,6 @@
 use wasm_bindgen::prelude::*;
 
 mod app;
-mod plantbox;
 
 #[wasm_bindgen]
 pub fn hydrate() {}
