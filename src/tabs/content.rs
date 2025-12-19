@@ -1,8 +1,9 @@
+use crate::tabs::Tab;
 use leptos::prelude::*;
 use stylers::style;
 
 #[component]
-pub fn TabContent(active_tab: RwSignal<&'static str>) -> impl IntoView {
+pub fn TabContent(active_tab: RwSignal<&'static Tab>) -> impl IntoView {
     let styler_class = style! { "TabContent",
         .warning {
             color: #FFFF00;
@@ -32,7 +33,7 @@ pub fn TabContent(active_tab: RwSignal<&'static str>) -> impl IntoView {
     view! { class = styler_class,
       <div class="content">
           {move || match active_tab.get() {
-              "Main" => view! {
+              Tab::Main => view! {
                   <div>
                       <div class="warning">"WARNING: Setting wrong values in below sections"</div>
                       <div class="warning">"         may cause system to malfunction."</div>
@@ -42,7 +43,7 @@ pub fn TabContent(active_tab: RwSignal<&'static str>) -> impl IntoView {
                       <div class="menu-item">"► System Date"</div>
                   </div>
               }.into_any(),
-              "Advanced" => view! {
+              Tab::Advanced => view! {
                   <div>
                       <div class="warning">"WARNING: Setting wrong values in below sections"</div>
                       <div class="warning">"         may cause system to malfunction."</div>
@@ -53,28 +54,27 @@ pub fn TabContent(active_tab: RwSignal<&'static str>) -> impl IntoView {
                       <div class="menu-item">"► I/O Virtualization"</div>
                   </div>
               }.into_any(),
-              "Security" => view! {
+              Tab::Security => view! {
                   <div>
                       <div class="menu-item">"► Administrator Password"</div>
                       <div class="menu-item">"► User Password"</div>
                       <div class="menu-item">"► Secure Boot Configuration"</div>
                   </div>
               }.into_any(),
-              "Boot" => view! {
+              Tab::Boot => view! {
                   <div>
                       <div class="menu-item">"► Boot Device Priority"</div>
                       <div class="menu-item">"► Hard Disk Drives"</div>
                       <div class="menu-item">"► CD/DVD Drives"</div>
                   </div>
               }.into_any(),
-              "Exit" => view! {
+              Tab::Exit => view! {
                   <div>
                       <div class="menu-item">"► Exit Saving Changes"</div>
                       <div class="menu-item">"► Exit Discarding Changes"</div>
                       <div class="menu-item">"► Load Setup Defaults"</div>
                   </div>
               }.into_any(),
-              _ => view! { <div>"Unknown tab"</div> }.into_any(),
           }}
       </div>
     }

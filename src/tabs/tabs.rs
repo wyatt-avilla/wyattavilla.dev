@@ -1,8 +1,9 @@
+use crate::tabs::Tab;
 use leptos::prelude::*;
 use stylers::style;
 
 #[component]
-pub fn Tabs(active_tab: RwSignal<&'static str>) -> impl IntoView {
+pub fn Tabs(active_tab: RwSignal<&'static Tab>) -> impl IntoView {
     let styler_class = style! { "Tabs",
         .tabs {
             display: flex;
@@ -32,38 +33,38 @@ pub fn Tabs(active_tab: RwSignal<&'static str>) -> impl IntoView {
       <div class="tabs">
           <div
               class="tab"
-              class:active=move || active_tab.get() == "Main"
-              on:click=move |_| active_tab.set("Main")
+              class:active=move || matches!(active_tab.get(), Tab::Main)
+              on:click=move |_| active_tab.set(&Tab::Main)
           >
-              "Main"
+              {Tab::Main.to_string()}
           </div>
           <div
               class="tab"
-              class:active=move || active_tab.get() == "Advanced"
-              on:click=move |_| active_tab.set("Advanced")
+              class:active=move || matches!(active_tab.get(), Tab::Advanced)
+              on:click=move |_| active_tab.set(&Tab::Advanced)
           >
-              "Advanced"
+              {Tab::Advanced.to_string()}
           </div>
           <div
               class="tab"
-              class:active=move || active_tab.get() == "Security"
-              on:click=move |_| active_tab.set("Security")
+              class:active=move || matches!(active_tab.get(), Tab::Security)
+              on:click=move |_| active_tab.set(&Tab::Security)
           >
-              "Security"
+              {Tab::Security.to_string()}
           </div>
           <div
               class="tab"
-              class:active=move || active_tab.get() == "Boot"
-              on:click=move |_| active_tab.set("Boot")
+              class:active=move || matches!(active_tab.get(), Tab::Boot)
+              on:click=move |_| active_tab.set(&Tab::Boot)
           >
-              "Boot"
+              {Tab::Boot.to_string()}
           </div>
           <div
               class="tab"
-              class:active=move || active_tab.get() == "Exit"
-              on:click=move |_| active_tab.set("Exit")
+              class:active=move || matches!(active_tab.get(), Tab::Exit)
+              on:click=move |_| active_tab.set(&Tab::Exit)
           >
-              "Exit"
+              {Tab::Exit.to_string()}
           </div>
       </div>
     }

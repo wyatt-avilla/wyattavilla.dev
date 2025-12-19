@@ -1,13 +1,13 @@
 use crate::footer::Footer;
 use crate::header::Header;
-use crate::tabs::{TabContent, Tabs};
+use crate::tabs::{Tab, TabContent, Tabs};
 use leptos::prelude::*;
 use stylers::style;
 
 #[component]
 #[allow(clippy::too_many_lines)]
 pub fn App() -> impl IntoView {
-    let active_tab = RwSignal::new("Main");
+    let active_tab = RwSignal::new(&Tab::Main);
 
     let styler_class = style! { "App",
         * {
