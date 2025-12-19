@@ -101,6 +101,17 @@
 
             nativeBuildInputs = nativeRustToolchain;
           };
+
+        apps.default = {
+          type = "app";
+          program = toString (
+            pkgs.writeShellScript "serve-wasm" ''
+              ${lib.getExe pkgs.python3} -m http.server --bind 127.0.0.1 8000 -d ${
+                self.packages.${system}.default
+              }
+            ''
+          );
+        };
       }
     );
 }
