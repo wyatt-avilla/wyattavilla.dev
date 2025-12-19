@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "wyattavilla.dev flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
