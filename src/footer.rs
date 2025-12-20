@@ -16,8 +16,8 @@ pub fn Footer() -> impl IntoView {
 
     view! { class = styler_class,
       <div class="footer">
-          <span>"v02.61 (C)Copyright 1985-2006, American Megatrends, Inc."</span>
-          <span>"↑↓: Select Item | Enter: Go to Sub Screen | F10: Save and Exit | ESC: Exit"</span>
+          <span>"v02.67 (C)Copyright 1985-2006, American Megatrends, Inc."</span>
+          <span>"Enter: Go to Sub Screen | F10: Save and Exit | ESC: Exit"</span>
       </div>
     }
 }
