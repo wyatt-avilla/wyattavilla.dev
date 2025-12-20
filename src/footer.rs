@@ -7,9 +7,8 @@ pub fn Footer() -> impl IntoView {
         .footer {
             background: #0000AA;
             color: #FFFFFF;
-            padding: 8px 16px;
+            padding: 1vh 0.5vw;
             border-top: 2px solid #FFFFFF;
-            font-size: 12px;
             display: flex;
             justify-content: space-between;
         }

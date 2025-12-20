@@ -77,6 +77,8 @@
               -o $out/${pname}_bg.wasm \
               -Oz
 
+              cp -r assets $out/
+
               cp target/stylers-release/main.css $out/
 
               cat > $out/index.html << EOF
@@ -95,7 +97,6 @@
                 </script>
               </body>
               </html>
-              EOF
             '';
 
             nativeBuildInputs = nativeRustToolchain;

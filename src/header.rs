@@ -7,7 +7,7 @@ pub fn Header() -> impl IntoView {
         .header {
             background: #0000AA;
             color: #FFFFFF;
-            padding: 8px;
+            padding: 1vh 0;
             text-align: center;
             font-weight: bold;
             border-bottom: 2px solid #FFFFFF;
