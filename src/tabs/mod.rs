@@ -2,6 +2,7 @@ mod about;
 mod content;
 mod education;
 mod employment;
+mod info_definitions;
 mod projects;
 mod tab;
 #[allow(clippy::module_inception)]
