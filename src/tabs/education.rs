@@ -98,14 +98,6 @@ pub fn Education(education_items: Vec<EducationData>) -> impl IntoView {
             margin: 0 auto;
             padding: 2rem;
         }
-
-        .section-title {
-            font-size: 1.5vmin;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-        }
     };
 
     view! { class = styler_class,
