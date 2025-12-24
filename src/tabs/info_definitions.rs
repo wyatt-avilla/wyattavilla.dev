@@ -1,5 +1,6 @@
 use super::education::EducationData;
 use super::employment::EmploymentData;
+use super::projects::ProjectData;
 use std::sync::LazyLock;
 
 pub static EDUCATION_ITEMS: LazyLock<Vec<EducationData>> = LazyLock::new(|| {
@@ -25,6 +26,27 @@ pub static EDUCATION_ITEMS: LazyLock<Vec<EducationData>> = LazyLock::new(|| {
             transcript_link: Some(String::from(
                 "https://github.com/wyatt-avilla/resume/blob/main/assets/ucsc_official_transcript.pdf",
             )),
+        },
+    ]
+});
+
+pub static PROJECT_ITEMS: LazyLock<Vec<ProjectData>> = LazyLock::new(|| {
+    vec![
+        ProjectData {
+            title: String::from("Discord Bot with LLM Tool-Calling Integration"),
+            link: String::from("https://github.com/wyatt-avilla/claude-discord-bot"),
+            date: String::from("August 2025"),
+            description: String::from(
+                "Built a Discord bot in Rust enabling Anthropic’s Claude to take actions in Discord servers through tool calling, featuring image analysis, message reactions, and configurable interaction patterns with per-server configuration management and probabilistic autonomous responses. Exposed as a NixOS service and packaged with Nix flakes.",
+            ),
+        },
+        ProjectData {
+            title: String::from("Type-Safe REST API with ESP32 Client Integration"),
+            link: String::from("https://github.com/wyatt-avilla/hypha"),
+            date: String::from("June 2025"),
+            description: String::from(
+                "Built a production-ready REST API in Rust using Actix Web to monitor systemd service statuses, with shared type definitions ensuring compile-time safety between server and ESP32 client firmware. Implemented asynchronous message-passing architecture using Embassy for low-power consumption, packaged as a configurable NixOS service with CLI interface for real-time system monitoring.",
+            ),
         },
     ]
 });

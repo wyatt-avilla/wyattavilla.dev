@@ -1,4 +1,4 @@
-use super::info_definitions::{EDUCATION_ITEMS, EMPLOYMENT_ITEMS};
+use super::info_definitions::{EDUCATION_ITEMS, EMPLOYMENT_ITEMS, PROJECT_ITEMS};
 use crate::tabs::{About, Education, Employment, Projects};
 use leptos::prelude::*;
 use strum::Display;
@@ -23,7 +23,7 @@ impl Tab {
                 Tab::About => About().into_any(),
                 Tab::Employment => view!{<Employment employment_items={EMPLOYMENT_ITEMS.clone()} />}.into_any(),
                 Tab::Education => view!{<Education education_items={EDUCATION_ITEMS.clone()} />}.into_any(),
-                Tab::Projects => Projects().into_any(),
+                Tab::Projects => view!{<Projects project_items={PROJECT_ITEMS.clone()} />}.into_any(),
             }}
         }
     }
