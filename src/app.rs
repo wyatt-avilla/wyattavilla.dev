@@ -53,6 +53,7 @@ pub fn App() -> impl IntoView {
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            box-shadow: 1.5rem 1.5rem 0 #000000;
         }
 
         @media (max-width: 768px) {
@@ -67,6 +68,7 @@ pub fn App() -> impl IntoView {
             .content-box {
                 width: min(95vw, 95vh);
                 height: min(95vw, 95vh);
+                box-shadow: 0.375rem 0.375rem 0 #000000;
             }
         }
 
@@ -78,6 +80,7 @@ pub fn App() -> impl IntoView {
             .content-box {
                 width: 100vw;
                 height: calc(100vh - 4rem);
+                box-shadow: none;
             }
         }
     };

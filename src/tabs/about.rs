@@ -24,16 +24,24 @@ pub fn About() -> impl IntoView {
             padding: 0.5rem;
             background-color: transparent;
             border: 0.125rem solid #000000;
-            border-radius: 0.25rem;
+            box-shadow: 0.25rem 0.25rem 0 #000000;
             color: inherit;
             text-decoration: none;
             font-size: 1rem;
-            transition: background-color 0.2s, border-color 0.2s;
+            transition: all 0.1s;
             cursor: pointer;
+            position: relative;
         }
 
         .about-link-button:hover {
             background-color: rgba(120, 120, 120, 0.1);
+            transform: translate(0.125rem, 0.125rem);
+            box-shadow: 0.125rem 0.125rem 0 #000000;
+        }
+
+        .about-link-button:active {
+            transform: translate(0.25rem, 0.25rem);
+            box-shadow: none;
         }
 
         .button-icon {
