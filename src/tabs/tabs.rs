@@ -27,13 +27,14 @@ pub fn Tabs(active_tab: RwSignal<&'static Tab>) -> impl IntoView {
         }
     };
 
-    view! { class = styler_class,
-      <div class="tabs">
-          {Tab::all().iter().map(|tab| {
-              view! {
-                  <TabComponent tab=tab active_tab=active_tab />
-              }
-          }).collect_view()}
-      </div>
+    view! { class=styler_class,
+        <div class="tabs">
+            {Tab::all()
+                .iter()
+                .map(|tab| {
+                    view! { <TabComponent tab=tab active_tab=active_tab /> }
+                })
+                .collect_view()}
+        </div>
     }
 }

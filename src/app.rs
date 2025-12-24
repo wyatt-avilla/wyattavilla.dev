@@ -85,7 +85,7 @@ pub fn App() -> impl IntoView {
         }
     };
 
-    view! { class = styler_class,
+    view! { class=styler_class,
         <div class="bios-container">
             <Header />
 

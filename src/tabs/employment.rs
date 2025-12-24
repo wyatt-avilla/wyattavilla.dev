@@ -138,26 +138,35 @@ pub fn EmploymentItem(employment_data: EmploymentData) -> impl IntoView {
         }
     };
 
-    view! { class = styler_class,
+    view! { class=styler_class,
         <div class="employment-item">
             <div class="employment-header">
                 <div class="job-title">{employment_data.title}</div>
-                <div class="date-range">{employment_data.start_date} " - " {employment_data.end_date}</div>
+                <div class="date-range">
+                    {employment_data.start_date} " - " {employment_data.end_date}
+                </div>
             </div>
 
             <div class="company-info">
-                <a href={employment_data.link.clone()} class="company-link" target="_blank" rel="noopener noreferrer">
+                <a
+                    href=employment_data.link.clone()
+                    class="company-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     <span class="company-name">{employment_data.company}</span>
                 </a>
                 <span class="location">{employment_data.location}</span>
             </div>
 
             <ul class="description-list">
-                {employment_data.description_bullets.into_iter().map(|bullet| {
-                    view! {
-                        <li>{bullet}</li>
-                    }
-                }).collect_view()}
+                {employment_data
+                    .description_bullets
+                    .into_iter()
+                    .map(|bullet| {
+                        view! { <li>{bullet}</li> }
+                    })
+                    .collect_view()}
             </ul>
         </div>
     }
@@ -185,13 +194,14 @@ pub fn Employment(employment_items: Vec<EmploymentData>) -> impl IntoView {
         }
     };
 
-    view! { class = styler_class,
+    view! { class=styler_class,
         <div class="employment-section">
-            {employment_items.into_iter().map(|emp| {
-                view! {
-                    <EmploymentItem employment_data=emp.clone() />
-                }
-            }).collect_view()}
+            {employment_items
+                .into_iter()
+                .map(|emp| {
+                    view! { <EmploymentItem employment_data=emp.clone() /> }
+                })
+                .collect_view()}
         </div>
     }
 }

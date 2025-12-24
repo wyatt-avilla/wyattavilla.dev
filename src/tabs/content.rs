@@ -30,9 +30,5 @@ pub fn TabContent(active_tab: RwSignal<&'static Tab>) -> impl IntoView {
         }
     };
 
-    view! { class = styler_class,
-      <div class="content">
-          {move || active_tab.get().content() }
-      </div>
-    }
+    view! { class=styler_class, <div class="content">{move || active_tab.get().content()}</div> }
 }

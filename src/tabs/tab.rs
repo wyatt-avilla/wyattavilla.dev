@@ -21,9 +21,15 @@ impl Tab {
         view! {
             {move || match self {
                 Tab::About => About().into_any(),
-                Tab::Employment => view!{<Employment employment_items={EMPLOYMENT_ITEMS.clone()} />}.into_any(),
-                Tab::Education => view!{<Education education_items={EDUCATION_ITEMS.clone()} />}.into_any(),
-                Tab::Projects => view!{<Projects project_items={PROJECT_ITEMS.clone()} />}.into_any(),
+                Tab::Employment => {
+                    view! { <Employment employment_items=EMPLOYMENT_ITEMS.clone() /> }.into_any()
+                }
+                Tab::Education => {
+                    view! { <Education education_items=EDUCATION_ITEMS.clone() /> }.into_any()
+                }
+                Tab::Projects => {
+                    view! { <Projects project_items=PROJECT_ITEMS.clone() /> }.into_any()
+                }
             }}
         }
     }

@@ -111,28 +111,48 @@ pub fn EducationItem(education_data: EducationData) -> impl IntoView {
         }
     };
 
-    view! { class = styler_class,
+    view! { class=styler_class,
         <div class="education-item">
             <div class="education-header">
                 <div class="university-name">{education_data.university}</div>
-                <div class="date-range">{education_data.start_date} " - " {education_data.end_date}</div>
+                <div class="date-range">
+                    {education_data.start_date} " - " {education_data.end_date}
+                </div>
             </div>
 
             <div class="degree-info">
                 <div class="major">{education_data.major}</div>
-                <div class="minor">{education_data.minor.map(|m| view! { "Minor: " {m} })}</div>
+                <div class="minor">
+                    {education_data
+                        .minor
+                        .map(|m| {
+                            view! {
+                                "Minor: "
+                                {m}
+                            }
+                        })}
+                </div>
                 <div class="specialization">"Specialization: " {education_data.specialization}</div>
             </div>
 
             <div class="education-footer">
-                {education_data.gpa.map(|g| view! {
-                    <div class="gpa">"GPA: " {format!("{g:.2}")}</div>
-                })}
-                {education_data.transcript_link.map(|link| view! {
-                    <a href={link} class="transcript-link" target="_blank" rel="noopener noreferrer">
-                        "View Transcript"
-                    </a>
-                })}
+                {education_data
+                    .gpa
+                    .map(|g| view! { <div class="gpa">"GPA: " {format!("{g:.2}")}</div> })}
+                {education_data
+                    .transcript_link
+                    .map(|link| {
+                        view! {
+                            <a
+                                href=link
+                                class="transcript-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                "View Transcript"
+                            </a>
+                        }
+                    })}
             </div>
         </div>
     }
@@ -160,13 +180,14 @@ pub fn Education(education_items: Vec<EducationData>) -> impl IntoView {
         }
     };
 
-    view! { class = styler_class,
+    view! { class=styler_class,
         <div class="education-section">
-            {education_items.into_iter().map(|edu| {
-                view! {
-                    <EducationItem education_data=edu.clone() />
-                }
-            }).collect_view()}
+            {education_items
+                .into_iter()
+                .map(|edu| {
+                    view! { <EducationItem education_data=edu.clone() /> }
+                })
+                .collect_view()}
         </div>
     }
 }

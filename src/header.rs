@@ -32,9 +32,5 @@ pub fn Header() -> impl IntoView {
         }
     };
 
-    view! { class = styler_class,
-      <div class="header">
-        "WYATT AVILLA"
-      </div>
-    }
+    view! { class=styler_class, <div class="header">"WYATT AVILLA"</div> }
 }
