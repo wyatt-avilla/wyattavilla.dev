@@ -164,7 +164,7 @@
               };
 
               buildPhase = ''
-                cargo clippy --offline --target=${wasmTarget} -- -W clippy::pedantic
+                cargo clippy --offline --target=${wasmTarget} -- -D warnings -W clippy::pedantic
               '';
 
               installPhase = ''

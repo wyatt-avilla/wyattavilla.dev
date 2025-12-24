@@ -13,6 +13,7 @@ pub struct EmploymentData {
 }
 
 #[component]
+#[allow(clippy::too_many_lines)]
 pub fn EmploymentItem(employment_data: EmploymentData) -> impl IntoView {
     let styler_class = style! { "EmploymentItem",
         .employment-item {

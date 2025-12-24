@@ -2,6 +2,7 @@ use leptos::prelude::*;
 use stylers::style;
 
 #[component]
+#[allow(clippy::too_many_lines)]
 pub fn About() -> impl IntoView {
     let styler_class = style! { "About",
         .about-section {

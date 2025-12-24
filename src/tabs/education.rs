@@ -14,6 +14,7 @@ pub struct EducationData {
 }
 
 #[component]
+#[allow(clippy::too_many_lines)]
 pub fn EducationItem(education_data: EducationData) -> impl IntoView {
     let styler_class = style! { "EducationItem",
         .education-item {
