@@ -39,7 +39,7 @@ pub fn TabComponent(tab: &'static Tab, active_tab: RwSignal<&'static Tab>) -> im
             color: #FFFFFF;
             background: #787878;
             border-right: 0.125rem solid #FFFFFF;
-            font-size: 1rem;
+            font-size: 1.5rem;
             transition: background-color 0.2s;
             text-align: center;
         }

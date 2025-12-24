@@ -12,6 +12,10 @@ pub fn Tabs(active_tab: RwSignal<&'static Tab>) -> impl IntoView {
             overflow-x: auto;
         }
 
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+
         @media (max-width: 480px) {
             .tabs {
                 justify-content: stretch;

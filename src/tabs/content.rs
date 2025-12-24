@@ -13,6 +13,10 @@ pub fn TabContent(active_tab: RwSignal<&'static Tab>) -> impl IntoView {
             color: #000000;
         }
 
+        .content::-webkit-scrollbar {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .content {
                 padding: 0.75rem;
