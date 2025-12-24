@@ -19,6 +19,9 @@
         };
         inherit (pkgs) lib;
 
+        cargoToml = builtins.fromTOML (builtins.readFile ./Cargo.toml);
+        pname = cargoToml.package.name;
+
         rustBin = with pkgs; [
           (rust-bin.nightly.latest.default.override {
             extensions = [
@@ -38,68 +41,63 @@
             export CARGO_BUILD_TARGET="${wasmTarget}"
           '';
         };
-        packages.default =
-          let
-            cargoToml = builtins.fromTOML (builtins.readFile ./Cargo.toml);
-            pname = cargoToml.package.name;
-          in
-          pkgs.rustPlatform.buildRustPackage {
-            inherit pname;
-            name = pname;
-            src = ./.;
-            cargoLock = {
-              lockFile = ./Cargo.lock;
-            };
-
-            buildPhase = ''
-              cargo build -j $(nproc) --offline --release --target=${wasmTarget}
-              mv target/stylers target/stylers-release
-            '';
-
-            checkPhase = ''
-              ${lib.getExe' pkgs.wabt "wasm-validate"} target/${wasmTarget}/release/${pname}.wasm
-            '';
-
-            installPhase = ''
-              mkdir -p $out/pkg
-
-              cp target/${wasmTarget}/release/${pname}.wasm $out/pkg/
-
-              ${lib.getExe pkgs.wasm-bindgen-cli} \
-              target/${wasmTarget}/release/${pname}.wasm \
-              --out-dir $out \
-              --target web \
-              --no-typescript
-
-              ${lib.getExe' pkgs.binaryen "wasm-opt"} \
-              $out/${pname}_bg.wasm \
-              -o $out/${pname}_bg.wasm \
-              -Oz
-
-              cp -r assets $out/
-
-              cp target/stylers-release/main.css $out/
-
-              cat > $out/index.html << EOF
-              <!DOCTYPE html>
-              <html>
-              <head>
-                <meta charset="utf-8">
-                <title>wyattavilla.dev</title>
-                <link rel="modulepreload" href="./${pname}.js">
-                <link rel="stylesheet" href="./main.css">
-              </head>
-              <body>
-                <script type="module">
-                  import init from './${pname}.js';
-                  init();
-                </script>
-              </body>
-              </html>
-            '';
-
-            nativeBuildInputs = rustBin;
+        packages.default = pkgs.rustPlatform.buildRustPackage {
+          inherit pname;
+          name = pname;
+          src = ./.;
+          cargoLock = {
+            lockFile = ./Cargo.lock;
           };
+
+          buildPhase = ''
+            cargo build -j $(nproc) --offline --release --target=${wasmTarget}
+            mv target/stylers target/stylers-release
+          '';
+
+          checkPhase = ''
+            ${lib.getExe' pkgs.wabt "wasm-validate"} target/${wasmTarget}/release/${pname}.wasm
+          '';
+
+          installPhase = ''
+            mkdir -p $out/pkg
+
+            cp target/${wasmTarget}/release/${pname}.wasm $out/pkg/
+
+            ${lib.getExe pkgs.wasm-bindgen-cli} \
+            target/${wasmTarget}/release/${pname}.wasm \
+            --out-dir $out \
+            --target web \
+            --no-typescript
+
+            ${lib.getExe' pkgs.binaryen "wasm-opt"} \
+            $out/${pname}_bg.wasm \
+            -o $out/${pname}_bg.wasm \
+            -Oz
+
+            cp -r assets $out/
+
+            cp target/stylers-release/main.css $out/
+
+            cat > $out/index.html << EOF
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="utf-8">
+              <title>wyattavilla.dev</title>
+              <link rel="modulepreload" href="./${pname}.js">
+              <link rel="stylesheet" href="./main.css">
+            </head>
+            <body>
+              <script type="module">
+                import init from './${pname}.js';
+                init();
+              </script>
+            </body>
+            </html>
+          '';
+
+          nativeBuildInputs = rustBin;
+        };
 
         apps.default = {
           type = "app";
@@ -153,8 +151,29 @@
               };
             };
           in
-          builtins.mapAttrs (name: args: mkCheck (args // { inherit name; })) checkArgs;
+          builtins.mapAttrs (name: args: mkCheck (args // { inherit name; })) checkArgs
+          // {
+            clippy = pkgs.rustPlatform.buildRustPackage {
+              inherit pname;
+              name = pname;
+              cargoDeps = pkgs.rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
+              src = ./.;
 
+              cargoLock = {
+                lockFile = ./Cargo.lock;
+              };
+
+              buildPhase = ''
+                cargo clippy --offline --target=${wasmTarget} -- -W clippy::pedantic
+              '';
+
+              installPhase = ''
+                touch $out
+              '';
+
+              nativeBuildInputs = rustBin;
+            };
+          };
       }
     );
 }
