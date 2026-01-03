@@ -12,8 +12,10 @@ pub static EDUCATION_ITEMS: LazyLock<Vec<EducationData>> = LazyLock::new(|| {
             specialization: String::from("Networking Software"),
             start_date: String::from("August 2025"),
             end_date: String::from("Present"),
-            gpa: None,
-            transcript_link: None,
+            gpa: Some(4.0),
+            transcript_link: Some(String::from(
+                "https://github.com/wyatt-avilla/resume/blob/main/assets/sjsu_unofficial_transcript.pdf",
+            )),
         },
         EducationData {
             university: String::from("University of California, Santa Cruz"),
