@@ -39,7 +39,7 @@ pub static PROJECT_ITEMS: LazyLock<Vec<ProjectData>> = LazyLock::new(|| {
             link: String::from("https://github.com/wyatt-avilla/claude-discord-bot"),
             date: String::from("August 2025"),
             description: String::from(
-                "Built a Discord bot in Rust enabling Anthropic’s Claude to take actions in Discord servers through tool calling, featuring image analysis, message reactions, and configurable interaction patterns with per-server configuration management and probabilistic autonomous responses. Exposed as a NixOS service and packaged with Nix flakes.",
+                "Built a Discord bot in Rust enabling Anthropic's Claude to take actions in Discord servers through tool calling, featuring image analysis, message reactions, and configurable interaction patterns with per-server configuration management and probabilistic autonomous responses. Exposed as a NixOS service and packaged with Nix flakes.",
             ),
         },
         ProjectData {
