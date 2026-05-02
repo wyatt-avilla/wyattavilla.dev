@@ -35,6 +35,14 @@ pub static EDUCATION_ITEMS: LazyLock<Vec<EducationData>> = LazyLock::new(|| {
 pub static PROJECT_ITEMS: LazyLock<Vec<ProjectData>> = LazyLock::new(|| {
     vec![
         ProjectData {
+            title: String::from("Circuit Breaker Labs CLI"),
+            link: String::from("https://github.com/circuitbreakerlabs/cli"),
+            date: String::from("January 2026 - Present"),
+            description: String::from(
+                "Built and shipped cbl, the public Rust CLI for Circuit Breaker Labs' AI safety evaluation platform, connecting to a deployed FastAPI service over WebSockets with typed protocol envelopes, API-key authentication, and version negotiation. Drove evaluations through an async engine built on tokio::select! and JoinSet, with model providers abstracted behind a shared trait supporting OpenAI, Ollama, and Rhai-scripted custom integrations. Shipped Ratatui inline progress displays, 79 unit and integration tests, and cargo-dist releases targeting Apple Silicon, Intel macOS, Linux musl, and Windows MSVC.",
+            ),
+        },
+        ProjectData {
             title: String::from("Discord Bot with LLM Tool-Calling Integration"),
             link: String::from("https://github.com/wyatt-avilla/claude-discord-bot"),
             date: String::from("August 2025"),
@@ -50,22 +58,75 @@ pub static PROJECT_ITEMS: LazyLock<Vec<ProjectData>> = LazyLock::new(|| {
                 "Built a production-ready REST API in Rust using Actix Web to monitor systemd service statuses, with shared type definitions ensuring compile-time safety between server and ESP32 client firmware. Implemented asynchronous message-passing architecture using Embassy for low-power consumption, packaged as a configurable NixOS service with CLI interface for real-time system monitoring.",
             ),
         },
+        ProjectData {
+            title: String::from("Open Source Contributor for Assembly Reverse Engineering"),
+            link: String::from(
+                "https://github.com/search?q=repo%3Adoldecomp%2Fmelee++author%3Awyatt-avilla&type=pullrequests&ref=advsearch",
+            ),
+            date: String::from("January 2024 - April 2024"),
+            description: String::from(
+                "Contributed 10 pull requests translating 2,800 lines of PowerPC assembly into 3,200 lines of C code for reverse-engineering Super Smash Bros. Melee. Ensured byte-perfect accuracy through GitHub Actions CI that validated the compiled binary against the original. Collaborated through code reviews with distributed team of developers.",
+            ),
+        },
     ]
 });
 
 pub static EMPLOYMENT_ITEMS: LazyLock<Vec<EmploymentData>> = LazyLock::new(|| {
     vec![
         EmploymentData {
-            title: String::from("Software Engineer Intern"),
+            title: String::from("Member of the Technical Staff"),
             company: String::from("Circuit Breaker Labs"),
             location: String::from("Washington, DC. Remote"),
             start_date: String::from("October 2025"),
             end_date: String::from("Present"),
             link: String::from("https://www.linkedin.com/company/circuit-breaker-labs-ai/"),
             description_bullets: vec![
-                String::from("Architected and deployed a production FastAPI REST API with authentication for paid customers to execute LLM red-teaming tests, provisioned on NixOS with PostgreSQL backend"),
-                String::from("Developed Python client library and GitHub Actions workflows to programmatically interface with the red-teaming API, enabling automated security testing in CI/CD pipelines"),
-                String::from("Configured full-stack infrastructure deployment on VPS using NixOS declarative configuration, managing PostgreSQL database, API service, Nginx reverse proxy, and authentication layer"),
+                String::from(
+                    "Built Circuit Breaker Labs' FastAPI evaluation platform for AI safety red-teaming, owning typed REST and WebSocket endpoints for single-turn and multi-turn LLM evaluation workflows",
+                ),
+                String::from(
+                    "Designed WebSocket evaluation flows with typed protocol envelopes, protocol-version validation, progress notifications, completion-request routing, and close-code error mapping, with database-backed API key authentication and monthly quota enforcement shared across REST and WebSocket handlers",
+                ),
+                String::from(
+                    "Implemented model-provider call tracking across OpenAI, OpenRouter, and WebSocket client providers, capturing prompt contents, token counts, and errors to power precise API expenditure calculation and link generated tests and evaluated responses back to underlying model calls",
+                ),
+                String::from(
+                    "Designed and migrated PostgreSQL schemas for users, API keys, test cases, generation records, test results, provider-call logs, and quotas using SQLAlchemy async and Alembic",
+                ),
+                String::from(
+                    "Packaged and deployed the API with Nix flakes, uv2nix, a NixOS service module, systemd, PostgreSQL, agenix-managed secrets, nginx TLS/WebSocket proxying, and Prometheus/Alertmanager alerting, reducing build size from 17GB to 1GB and build time from 5+ hours to under a minute by removing CUDA dependencies and pinning Nix inputs",
+                ),
+                String::from(
+                    "Refactored evaluation and provider functions to errors-as-values, enabling per-test-case error reporting, and debugged production-only request hanging caused by HTTP client timeout and resource-leak issues only surfacing after extended server uptime",
+                ),
+                String::from(
+                    "Established CI/CD across Python and Nix codebases with GitHub Actions workflows for Ruff, strict Mypy, pytest coverage, Nix builds, statix, and nixfmt",
+                ),
+                String::from(
+                    "Built the public Rust cbl CLI client for the evaluation platform, implementing async WebSocket orchestration, multi-provider abstraction, and cross-platform release automation (see Projects)",
+                ),
+            ],
+        },
+        EmploymentData {
+            title: String::from("Backend Developer Intern"),
+            company: String::from("Lillup"),
+            location: String::from("San Francisco, CA. Remote"),
+            start_date: String::from("September 2024"),
+            end_date: String::from("December 2024"),
+            link: String::from("https://www.linkedin.com/company/lillup/"),
+            description_bullets: vec![
+                String::from(
+                    "Built a FastAPI backend with LangChain integration for LLM tool calling, enabling the model to dynamically query user data through a RESTful endpoint that processed multi-turn conversations with tool execution",
+                ),
+                String::from(
+                    "Designed and implemented custom tool definitions with automated response parsing, handling JSON deserialization of LLM outputs into function arguments and returning structured responses",
+                ),
+                String::from(
+                    "Extended Markdown syntax using markdown-it-py and regex parsing to support structured metadata (tags, progress indicators, due dates) for improved LLM context in time-sensitive applications",
+                ),
+                String::from(
+                    "Established code quality standards with static typing (Mypy), Ruff for formatting/linting, and automated CI/CD pipeline through GitHub Actions",
+                ),
             ],
         },
         EmploymentData {
@@ -81,29 +142,6 @@ pub static EMPLOYMENT_ITEMS: LazyLock<Vec<EmploymentData>> = LazyLock::new(|| {
                 ),
                 String::from(
                     "Led group tutoring sessions for data structures and algorithms, focusing on problem-solving strategies for technical interview preparation",
-                ),
-            ],
-        },
-        EmploymentData {
-            title: String::from("Backend Developer Intern"),
-            company: String::from("Lillup"),
-            location: String::from("San Francisco, CA. Remote"),
-            start_date: String::from("September 2024"),
-            end_date: String::from("December 2024"),
-            link: String::from("https://www.linkedin.com/company/lillup/"),
-            description_bullets: vec![
-                String::from(
-                    "Built a FastAPI backend with LangChain integration for LLM tool calling, enabling the model to dynamically
-query user data through a RESTful endpoint that processed multi-turn conversations with tool execution"
-                ),
-                String::from(
-                    "Designed and implemented custom tool definitions with automated response parsing, handling JSON deserialization of LLM outputs into function arguments and returning structured responses",
-                ),
-                String::from(
-                    "Extended Markdown syntax using markdown-it-py and regex parsing to support structured metadata (tags, progress indicators, due dates) for improved LLM context in time-sensitive applications",
-                ),
-                String::from(
-                    "Established code quality standards with static typing (Mypy), Ruff for formatting/linting, and automated CI/CD pipeline through GitHub Actions",
                 ),
             ],
         },
