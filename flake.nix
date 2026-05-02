@@ -19,7 +19,7 @@
         };
         inherit (pkgs) lib;
 
-        cargoToml = builtins.fromTOML (builtins.readFile ./Cargo.toml);
+        cargoToml = fromTOML (builtins.readFile ./Cargo.toml);
         pname = cargoToml.package.name;
 
         rustBin = with pkgs; [
