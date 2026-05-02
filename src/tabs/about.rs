@@ -130,7 +130,14 @@ pub fn About() -> impl IntoView {
 
             <div class="about-content">
                 <p>
-                    "I'm a graduate student focused on systems programming and backend development."
+                    "I'm a graduate student focused on systems programming and backend development. You can find my resume "
+                    <a
+                        href="https://github.com/wyatt-avilla/resume/blob/main/resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        "here"
+                    </a> "."
                 </p>
                 <p>
                     "This website is written in Rust, compiled to JavaScript with a Nix flake, and automatically deployed to GitHub pages. Check out the source code "
