@@ -21,6 +21,9 @@
 
         cargoToml = fromTOML (builtins.readFile ./Cargo.toml);
         pname = cargoToml.package.name;
+        cargoLock = {
+          lockFile = ./Cargo.lock;
+        };
 
         rustBin = with pkgs; [
           (rust-bin.nightly.latest.default.override {
@@ -42,12 +45,9 @@
           '';
         };
         packages.default = pkgs.rustPlatform.buildRustPackage {
-          inherit pname;
+          inherit pname cargoLock;
           name = pname;
           src = ./.;
-          cargoLock = {
-            lockFile = ./Cargo.lock;
-          };
 
           buildPhase = ''
             cargo build -j $(nproc) --offline --release --target=${wasmTarget}
@@ -167,14 +167,9 @@
           builtins.mapAttrs (name: args: mkCheck (args // { inherit name; })) checkArgs
           // {
             clippy = pkgs.rustPlatform.buildRustPackage {
-              inherit pname;
+              inherit pname cargoLock;
               name = pname;
-              cargoDeps = pkgs.rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
               src = ./.;
-
-              cargoLock = {
-                lockFile = ./Cargo.lock;
-              };
 
               buildPhase = ''
                 cargo clippy --offline --target=${wasmTarget} -- -D warnings -W clippy::pedantic
