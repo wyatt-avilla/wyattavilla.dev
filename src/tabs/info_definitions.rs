@@ -153,16 +153,19 @@ pub static EMPLOYMENT_ITEMS: LazyLock<Vec<EmploymentData>> = LazyLock::new(|| {
             link: String::from("https://www.linkedin.com/company/lillup/"),
             description_bullets: vec![
                 String::from(
-                    "Built a FastAPI backend with LangChain integration for LLM tool calling, enabling the model to dynamically query user data through a RESTful endpoint that processed multi-turn conversations with tool execution",
+                    "Built a stateless FastAPI backend integrating LangChain with a self-hosted Llama model on AWS, enabling natural-language interaction with structured user profile data",
                 ),
                 String::from(
-                    "Designed and implemented custom tool definitions with automated response parsing, handling JSON deserialization of LLM outputs into function arguments and returning structured responses",
+                    "Designed ~10 LangChain tool definitions for reading and updating profile fields, including typed JSON deserialization of tool-call outputs and structured response formatting",
                 ),
                 String::from(
-                    "Extended Markdown syntax using markdown-it-py and regex parsing to support structured metadata (tags, progress indicators, due dates) for improved LLM context in time-sensitive applications",
+                    "Implemented multi-turn conversation handling over a RESTful API, with clients retaining history and the backend executing LLM-selected tools per turn without server-side session state",
                 ),
                 String::from(
-                    "Established code quality standards with static typing (Mypy), Ruff for formatting/linting, and automated CI/CD pipeline through GitHub Actions",
+                    "Extended Markdown syntax via markdown-it-py to support structured progress and datetime metadata for LLM context injection, enabling human-writable task authoring",
+                ),
+                String::from(
+                    "Established CI/CD from scratch with GitHub Actions, gating on pytest, Mypy, and Ruff; delivered the proof-of-concept to company leadership as sole backend engineer on a cross-platform team",
                 ),
             ],
         },
@@ -175,10 +178,19 @@ pub static EMPLOYMENT_ITEMS: LazyLock<Vec<EmploymentData>> = LazyLock::new(|| {
             link: String::from("https://www.linkedin.com/school/ucsc/"),
             description_bullets: vec![
                 String::from(
-                    "Independently migrated 4 programming assignments and 12 assessments (∼2,000 lines) from C++ to Python, ensuring 100% test compatibility across 1,600+ test cases while implementing modern Python idioms including static typing, generics, comprehensions, and lazy evaluation",
+                    "Migrated 4 programming assignments and 12 assessments (~2,000 lines) from C++ to Python for a ~300-student data structures and algorithms course, preserving compatibility with 1,600+ existing test cases and adopting modern Python idioms throughout",
                 ),
                 String::from(
-                    "Led group tutoring sessions for data structures and algorithms, focusing on problem-solving strategies for technical interview preparation",
+                    "Customized Codio development environments by extending the underlying Docker image with gcc, gdb, and valgrind, eliminating local setup friction and providing a consistent toolchain across all student machines",
+                ),
+                String::from(
+                    "Supported automated grading workflows built around structured stdin/stdout execution, output diffing, and result reporting via POST requests to an internal university grading API",
+                ),
+                String::from(
+                    "Led group tutoring sessions (~10 students each) covering linked lists, AVL trees, BFS, N-Queens, file I/O, Makefiles, and debugging, with an emphasis on conceptual understanding over direct solutions",
+                ),
+                String::from(
+                    "Co-authored a public course wiki linked from Canvas for ~300 students, covering data structures, algorithms, and clean programming practices",
                 ),
             ],
         },
