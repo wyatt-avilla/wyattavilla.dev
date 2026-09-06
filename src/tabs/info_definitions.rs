@@ -108,6 +108,43 @@ pub static EMPLOYMENT_ITEMS: LazyLock<Vec<EmploymentData>> = LazyLock::new(|| {
             ],
         },
         EmploymentData {
+            title: String::from("Software Engineer Intern"),
+            company: String::from("Principal Financial Group"),
+            location: String::from("Des Moines, Iowa"),
+            start_date: String::from("May 2026"),
+            end_date: String::from("August 2026"),
+            link: String::from("https://www.linkedin.com/company/principalfinancialgroup/"),
+            description_bullets: vec![
+                String::from(
+                    "Extended the Digital Analytics team's TypeScript Helm chart-sync automation into a general transformation subsystem, parsing upstream charts, rendering templates, and patching every container definition to drop disallowed Linux kernel capabilities",
+                ),
+                String::from(
+                    "Iteratively deployed transformed charts to the development environment and triaged live Kubernetes admission-controller policy reports, since policy evaluation required deployed resources rather than build-time chart checks, bringing all 51 development Kubernetes resources into compliance",
+                ),
+                String::from(
+                    "Authored and reviewed a 6,000+-line downstream pull request demonstrating the maintenance cost of injecting the security patch, then wrote a technical recommendation for upstream chart maintainers to implement the fix in production",
+                ),
+                String::from(
+                    "Shipped a further chart-sync extension that automatically created and cross-linked a ticket for every generated pull request, closing a manual tracking gap in the team's release workflow",
+                ),
+                String::from(
+                    "Owned AWS infrastructure and CI quality gates for a five-person intern hackathon team that became a competition finalist, provisioning API Gateway, Lambda, Bedrock, and DynamoDB with AWS CDK behind a context-aware prompt-refinement VS Code extension",
+                ),
+                String::from(
+                    "Built CI checks for testing, linting, formatting, and infrastructure validation for the completed extension, which was prepared for Visual Studio Marketplace publication",
+                ),
+                String::from(
+                    "Deployed AWS CDK-managed SNS alerting for production CloudFront errors, triggering on three severity-threshold events within a 5-minute window, and migrated two CDK-backed applications to Principal's enterprise pipeline while replacing deprecated GitHub Actions steps",
+                ),
+                String::from(
+                    "Diagnosed GitHub deployment failures to a repository merge-strategy misconfiguration, corrected it, and validated the fix across two core repositories",
+                ),
+                String::from(
+                    "Integrated a session-analytics platform into a Next.js-based internal sandbox to validate customer-site tracking, and performed QA on a no-code A/B testing platform used by the team",
+                ),
+            ],
+        },
+        EmploymentData {
             title: String::from("Backend Developer Intern"),
             company: String::from("Lillup"),
             location: String::from("San Francisco, CA. Remote"),
