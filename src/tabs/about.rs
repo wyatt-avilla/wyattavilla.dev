@@ -132,7 +132,7 @@ pub fn About() -> impl IntoView {
                 <p>
                     "I'm a graduate student focused on systems programming and backend development. You can find my resume "
                     <a
-                        href="https://github.com/wyatt-avilla/resume/blob/main/resume.pdf"
+                        href="https://resume.wyattavilla.dev"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
