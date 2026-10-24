@@ -74,6 +74,17 @@ pub static PROJECT_ITEMS: LazyLock<Vec<ProjectData>> = LazyLock::new(|| {
 pub static EMPLOYMENT_ITEMS: LazyLock<Vec<EmploymentData>> = LazyLock::new(|| {
     vec![
         EmploymentData {
+            title: String::from("Software Engineer Intern"),
+            company: String::from("Heron Power Electronics"),
+            location: String::from("Scott's Valley, CA"),
+            start_date: String::from("August 2026"),
+            end_date: String::from("Present"),
+            link: String::from("https://www.linkedin.com/company/heron-power-electronics/"),
+            description_bullets: vec![String::from(
+                "Core developer of a manufacturing execution system for solid-state tranformers",
+            )],
+        },
+        EmploymentData {
             title: String::from("Member of the Technical Staff"),
             company: String::from("Circuit Breaker Labs"),
             location: String::from("Washington, DC. Remote"),
