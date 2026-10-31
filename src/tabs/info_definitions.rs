@@ -93,28 +93,34 @@ pub static EMPLOYMENT_ITEMS: LazyLock<Vec<EmploymentData>> = LazyLock::new(|| {
             link: String::from("https://www.linkedin.com/company/circuit-breaker-labs-ai/"),
             description_bullets: vec![
                 String::from(
-                    "Built Circuit Breaker Labs' FastAPI evaluation platform for AI safety red-teaming, owning typed REST and WebSocket endpoints for single-turn and multi-turn LLM evaluation workflows",
+                    "Built Circuit Breaker Labs’ FastAPI evaluation platform for AI-safety red-teaming, owning typed REST and WebSocket APIs for LLM evaluation workflows",
                 ),
                 String::from(
-                    "Designed WebSocket evaluation flows with typed protocol envelopes, protocol-version validation, progress notifications, completion-request routing, and close-code error mapping, with database-backed API key authentication and monthly quota enforcement shared across REST and WebSocket handlers",
+                    "Designed WebSocket protocols with versioned envelopes, progress notifications, and close-code error mapping, sharing API-key authentication and monthly quota enforcement across REST and WebSocket handlers",
                 ),
                 String::from(
-                    "Implemented model-provider call tracking across OpenAI, OpenRouter, and WebSocket client providers, capturing prompt contents, token counts, and errors to power precise API expenditure calculation and link generated tests and evaluated responses back to underlying model calls",
+                    "Implemented model-provider observability across OpenAI, OpenRouter, and client-hosted providers, capturing prompts, tokens, errors, and costs and linking tests and results to their underlying model calls",
                 ),
                 String::from(
-                    "Designed and migrated PostgreSQL schemas for users, API keys, test cases, generation records, test results, provider-call logs, and quotas using SQLAlchemy async and Alembic",
+                    "Designed and migrated PostgreSQL schemas for users, API keys, test cases, generations, evaluations, provider calls, and quotas using async SQLAlchemy and Alembic; added migration walks, schema-drift checks, and ephemeral Neon test branches",
                 ),
                 String::from(
-                    "Packaged and deployed the API with Nix flakes, uv2nix, a NixOS service module, systemd, PostgreSQL, agenix-managed secrets, nginx TLS/WebSocket proxying, and Prometheus/Alertmanager alerting, reducing build size from 17GB to 1GB and build time from 5+ hours to under a minute by removing CUDA dependencies and pinning Nix inputs",
+                    "Evolved production hosting from NixOS to containerized GCP Cloud Run and Neon, after cutting the original Nix build from 17 GB to 1 GB and from 5+ hours to under one minute",
                 ),
                 String::from(
-                    "Refactored evaluation and provider functions to errors-as-values, enabling per-test-case error reporting, and debugged production-only request hanging caused by HTTP client timeout and resource-leak issues only surfacing after extended server uptime",
+                    "Provisioned the GCP/Neon production foundation with Terraform/OpenTofu (Artifact Registry, Secret Manager, remote state) and keyless GitHub Actions auth via OIDC Workload Identity Federation, replacing static credentials with least-privilege, per-purpose service identities",
                 ),
                 String::from(
-                    "Established CI/CD across Python and Nix codebases with GitHub Actions workflows for Ruff, strict Mypy, pytest coverage, Nix builds, statix, and nixfmt",
+                    "Built guarded production delivery pipelines with immutable commit-tagged images, pre-deployment Alembic jobs, deployed-configuration verification, and live endpoint smoke tests",
                 ),
                 String::from(
-                    "Built the public Rust cbl CLI client for the evaluation platform, implementing async WebSocket orchestration, multi-provider abstraction, and cross-platform release automation (see Projects)",
+                    "Established CI/CD and supply-chain security across Python, Docker, Nix, Terraform, and GitHub Actions using Hadolint, zizmor, and scheduled Trivy and dependency audits",
+                ),
+                String::from(
+                    "Refactored evaluation and provider functions to errors-as-values for per-test-case failure reporting and diagnosed production-only request hangs from HTTP timeout and resource leaks",
+                ),
+                String::from(
+                    "Built the public Rust `cbl` CLI for the evaluation platform, with async WebSocket orchestration, multi-provider abstractions, and cross-platform release automation (see projects)",
                 ),
             ],
         },
